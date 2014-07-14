@@ -3,4 +3,16 @@ class Task < ActiveRecord::Base
   belongs_to :category
 
   validates :name, presence: true, uniqueness: true
+
+  def priority_to_word
+    if self.priority == 1
+      'Low'
+    elsif self.priority == 2
+      'Medium'
+    elsif self.priority == 3
+      'High'
+    else
+      'WTF'
+    end
+  end
 end

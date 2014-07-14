@@ -20,6 +20,9 @@
 
   <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
   <!-- prettify it later maybe? -->
+  <br/>
+  <%= f.label :priority %>
+  <%= f.select(:priority, [['Low', 1], ['Medium', 2], ['High', 3]]) %>
 
   <br/>
   <%= f.submit 'Create Task' %>
