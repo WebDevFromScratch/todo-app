@@ -1,0 +1,21 @@
+<h2>New Task</h2>
+
+<% if @task.errors.any? %>
+  <h4>There were some errors</h4>
+  <ul>
+  <% @task.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+  <hr/>
+<% end %>
+
+<%= form_for [@user, @task] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br/>
+  <%= f.submit 'Create Task' %>
+<% end %>
