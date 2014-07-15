@@ -1,0 +1,21 @@
+<%= render 'shared/header', header: 'New Task' %>
+
+<%= render 'shared/error_messages', object: @task %>
+
+<%= form_for [@user, @task] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br/>
+
+  <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
+  <!-- prettify it later maybe? -->
+  <br/>
+  <%= f.label :priority %>
+  <%= f.select(:priority, [['Low', 1], ['Medium', 2], ['High', 3]]) %>
+
+  <br/>
+  <%= f.submit 'Edit Task' %>
+<% end %>
