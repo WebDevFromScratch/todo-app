@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
     elsif self.priority == 3
       'High'
     else
-      'WTF'
+      'WTF' #this should be removed later on
     end
   end
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
-  before_action :require_same_user, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_same_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -20,6 +20,18 @@ class UsersController < ApplicationController
 
   def show
     @tasks = Task.where(user_id: @user.id)
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:message] = "Your profile has been updated"
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private

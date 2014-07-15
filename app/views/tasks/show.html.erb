@@ -9,7 +9,6 @@
 <br/>
 <small>
   <%= link_to 'edit task', edit_user_task_path(@task.user, @task) %>
-  &nbsp;
   <%= link_to 'remove task', user_task_path(@task.user, @task), method: 'delete', data: { confirm: "Are You Sure?" } %>
 </small>
 <br/>

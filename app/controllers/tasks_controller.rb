@@ -1,16 +1,17 @@
 class TasksController < ApplicationController
+  before_action :set_user, except: [:show]
+  before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit]
+
   def show
     @task = Task.find(params[:id])
   end
 
   def new
-    @user = User.find(params[:user_id])
     @task = Task.new
-    @categories = Category.all
   end
 
   def create
-    @user = User.find(params[:user_id])
     @task = Task.new(task_params)
     @task.user_id = params[:user_id]
 
@@ -23,14 +24,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @task = Task.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @task = Task.find(params[:id])
-
     if @task.update(task_params)
       flash[:notice] = "Your task was updated"
       redirect_to user_path(@user)
@@ -40,9 +36,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    @task = Task.find(params[:id])
-
     @task.destroy
     flash[:notice] = "Your task was removed"
     redirect_to user_path(@user)
@@ -60,6 +53,10 @@ class TasksController < ApplicationController
   end
 
   def set_task
+    @task = Task.find(params[:id])
+  end
 
+  def set_categories
+    @categories = Category.all
   end
 end
