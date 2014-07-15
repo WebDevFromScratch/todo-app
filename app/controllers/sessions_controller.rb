@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      user = current_user
+      redirect_to user_path(user)
+    end
   end
 
   def create
@@ -10,7 +14,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user) #current_user
     else
       flash[:error] = "There is something wrong with your Username and/or Password"
-      redirect_to login_path
+      redirect_to :back
     end
   end
 
@@ -18,6 +22,6 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
 
     flash[:notice] = "You have successfully logged out"
-    redirect_to login_path #change this to sth that makes sense later
+    redirect_to root_path
   end
 end
