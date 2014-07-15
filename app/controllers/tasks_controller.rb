@@ -14,8 +14,6 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user_id = params[:user_id]
 
-    binding.pry
-
     if @task.save
       flash[:notice] = "Your task was created!"
       redirect_to user_path(@user)
