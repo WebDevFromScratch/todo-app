@@ -1,7 +1,10 @@
-<h2><%= @task.name %></h2>
+<%= render 'shared/header', header: @task.name %>
 
-<p><%= @task.description %></p>
+<p>Description: <%= @task.description %></p>
 
 <small>Category: <%= @task.category.name %></small>
 <br/>
 <small>Priority: <%= @task.priority_to_word %></small>
+<br/>
+<br/>
+<%= link_to "back to #{@task.user.username}", user_path(@task.user) %>

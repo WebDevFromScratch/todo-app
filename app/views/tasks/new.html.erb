@@ -1,14 +1,6 @@
-<h2>New Task</h2>
+<%= render 'shared/header', header: 'New Task' %>
 
-<% if @task.errors.any? %>
-  <h4>There were some errors</h4>
-  <ul>
-  <% @task.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-  <hr/>
-<% end %>
+<%= render 'shared/error_messages', object: @task %>
 
 <%= form_for [@user, @task] do |f| %>
   <%= f.label :name %>
