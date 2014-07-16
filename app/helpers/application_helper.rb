@@ -13,4 +13,14 @@ module ApplicationHelper
         flash_type.to_s
     end
   end
+
+  def well_priority_class(obj)
+    if obj.priority == 1
+      "priority-low"
+    elsif obj.priority == 2
+      "priority-med"
+    else
+      "priority-high"
+    end
+  end
 end

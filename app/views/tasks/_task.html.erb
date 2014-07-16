@@ -1,4 +1,4 @@
-<div class='well well-sm'>
+<div class="well well-sm <%= well_priority_class(task) %>">
   <h4>
     <%= link_to task.name, user_task_path(@user, task) %>
     <span class='badge pull-right'><%= task.category.name %></span>

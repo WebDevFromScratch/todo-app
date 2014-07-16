@@ -46,3 +46,33 @@ ul {
   list-style-type: none;
   padding-left: 0;
 }
+
+.priority-high {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+
+  a {
+    color: #b94a48;
+  }
+}
+
+.priority-med {
+  background-color: #fcf8e3;
+  border-color: #fbeed5;
+  color: #f89406;
+
+  a {
+    color: #f89406;
+  }
+}
+
+.priority-low {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+
+  a {
+    color: #468847;
+  }
+}
