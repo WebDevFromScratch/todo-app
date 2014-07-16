@@ -1,5 +1,8 @@
 <%= render 'shared/header', header: 'Edit Task' %>
 
-<%= render 'shared/error_messages', object: @task %>
-
-<%= render 'form', button_text: 'Edit Task' %>
+<div class='row'>
+  <div class='col-md-6 col-md-offset-3'>
+    <%= render 'shared/error_messages', object: @task %>
+    <%= render 'form', button_text: 'Edit Task' %>
+  </div>
+</div>

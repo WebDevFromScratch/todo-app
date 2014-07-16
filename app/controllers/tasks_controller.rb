@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_user, except: [:show]
   before_action :set_task, only: [:edit, :update, :destroy]
-  before_action :set_categories, only: [:new, :edit]
+  before_action :set_categories, only: [:new, :create, :edit, :update]
 
   def show
     @task = Task.find(params[:id])

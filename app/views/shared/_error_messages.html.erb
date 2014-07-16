@@ -1,9 +1,12 @@
 <% if object.errors.any? %>
-  <h4>There were some errors</h4>
-  <ul>
-  <% object.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-  <hr/>
+  <div class='alert alert-danger'>
+    <h4 class='text-center'>There were some errors</h4>
+    <hr/>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+
 <% end %>
