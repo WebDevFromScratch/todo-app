@@ -13,13 +13,13 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+    <div class='container'>
+      <%= render 'layouts/flash_messages' %>
 
-    <h1>ToDo!</h1>
-    <hr/>
+      <%= yield %>
+    </div>
+  
 
-    <%= render 'layouts/flash_messages' %>
-
-    <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
