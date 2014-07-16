@@ -5,6 +5,11 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if logged_in? %>
+        <ul class='nav navbar-nav'>
+          <li><%= link_to 'New Task', new_user_task_path(current_user) %></li>
+        </ul>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <p class='navbar-text'>Hi, <%= current_user.username %></p>

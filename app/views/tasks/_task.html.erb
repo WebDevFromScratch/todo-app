@@ -1,0 +1,6 @@
+<div class='well well-sm'>
+  <h4>
+    <%= link_to task.name, user_task_path(@user, task) %>
+    <span class='badge pull-right'><%= task.category.name %></span>
+  </h4>
+</div>

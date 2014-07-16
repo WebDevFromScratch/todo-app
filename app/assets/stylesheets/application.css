@@ -37,3 +37,12 @@
     display: none;
   }
 }
+
+textarea {
+  height: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}

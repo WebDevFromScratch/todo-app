@@ -1,19 +1,11 @@
-<h2>Welcome, <%= @user.username %>!</h2>
-
-<h2>All Tasks</h2>
-
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <%= link_to task.name, user_task_path(@user, task) %>
-    </li>
-  <% end %>
-</ul>
-
-<hr/>
-
-<%= link_to 'New Task', new_user_task_path(@user) %>
+<h2 class='text-center'>Stuff to Do</h2>
 <br/>
-<br/>
-<%= link_to 'Edit Profile', edit_user_path(@user) %>
-<%= link_to 'Logout', logout_path, method: 'delete' %>
+<div class='col-md-6 col-md-offset-3'>
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <%= render 'tasks/task', task: task %>
+      </li>
+    <% end %>
+  </ul>
+</div>  

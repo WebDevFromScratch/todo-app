@@ -1,16 +1,21 @@
 <%= render 'shared/header', header: @task.name %>
 
-<p>Description: <%= @task.description %></p>
-
-<small>Category: <%= @task.category.name %></small>
-<br/>
-<small>Priority: <%= @task.priority_to_word %></small>
-<br/>
-<br/>
-<small>
-  <%= link_to 'edit task', edit_user_task_path(@task.user, @task) %>
-  <%= link_to 'remove task', user_task_path(@task.user, @task), method: 'delete', data: { confirm: "Are You Sure?" } %>
-</small>
-<br/>
-<br/>
-<%= link_to "back to all tasks", user_path(@task.user) %>
+<div class='col-md-6 col-md-offset-3'>
+  <div class='row'>
+    <%= link_to 'edit task', edit_user_task_path(@task.user, @task), class: 'btn btn-info btn-sm' %>
+    <%= link_to 'remove task', user_task_path(@task.user, @task), method: 'delete', data: { confirm: "Are You Sure?" }, class: 'btn btn-warning btn-sm' %>
+  </div>
+  <br/>
+  <div class='row'>
+  <div class='panel panel-default'>
+    <div class='panel-heading'>
+      Priority: <%= @task.priority_to_word %>
+      <span class='badge pull-right'><%= @task.category.name %></span>
+    </div>
+    <div class='panel-body'><%= @task.description %></div>
+  </div>
+  <br/>
+  <br/>
+  <p class='text-center'><%= link_to "Back", user_path(@task.user) %></p>
+  </div>
+</div>
