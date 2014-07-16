@@ -41,11 +41,19 @@ class TasksController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def accomplished
+    @task = Task.find(params[:task_id])
+    @task.mark_accomplished
+    @task.save
+    flash[:notice] = "Task accomplished"
+    redirect_to user_path(@user)
+  end
+
   private
 
   def task_params
     params.require(:task).permit(:name, :description, :user_id, :category_id, 
-      :priority)
+      :priority, :accomplished)
   end
 
   def set_user

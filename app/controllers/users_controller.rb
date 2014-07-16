@@ -20,6 +20,8 @@ class UsersController < ApplicationController
 
   def show
     @tasks = Task.where(user_id: @user.id)
+    @tasks_in_progress = @tasks.where({accomplished: false}).order(:priority).all.reverse
+    @tasks_accomplished = @tasks.where({accomplished: true}).order(:priority).all.reverse
   end
 
   def edit

@@ -1,13 +1,24 @@
-<% @tasks = @tasks.order(:priority).all.reverse %>
+<!--<% @tasks = @tasks.order(:priority).all.reverse %>--> <!-- remove accomplished from this (maybe better to do this in controller?) -->
 
 <%= render 'shared/header', header: "Stuff to Do" %>
 
 <div class='col-md-6 col-md-offset-3'>
   <ul>
-    <% @tasks.each do |task| %>
+    <% @tasks_in_progress.each do |task| %>
       <li>
         <%= render 'tasks/task', task: task %>
       </li>
     <% end %>
   </ul>
-</div>  
+  <hr/>
+  <h3 class='text-center'>Accomplished Tasks</h3>
+  <hr/>
+  <!-- here will go a list of tasks where accomplished == true -->
+  <ul>
+    <% @tasks_accomplished.each do |task| %>
+      <li>
+        <%= render 'tasks/task', task: task %>
+      </li>
+    <% end %>
+  </ul>
+</div>

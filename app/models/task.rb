@@ -17,4 +17,8 @@ class Task < ActiveRecord::Base
       'WTF' #this should be removed later on
     end
   end
+
+  def mark_accomplished
+    self.accomplished = true
+  end
 end
