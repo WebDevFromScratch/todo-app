@@ -6,15 +6,17 @@
 
     <title>ToDo</title>
 
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag    "application", :media => 'all' %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+    <%= yield(:head) %>
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
+
     <div class='container'>
-      <%= render 'layouts/flash_messages' %>
+      <%= render 'layouts/flash_messages', flash: flash %>
 
       <%= yield %>
     </div>
