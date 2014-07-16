@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'ToDo', root_path, class: 'navbar-brand' %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <p class='navbar-text'>Hi, <%= current_user.username %></p>
+          <li class='divider-vertical'></li>
+          <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
+          <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
+        <% else %>
+          <p class='navbar-text'>Let's Do Stuff!</p>
+          <li class='divider-vertical'></li>
+          <li><%= link_to 'Register', new_user_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
