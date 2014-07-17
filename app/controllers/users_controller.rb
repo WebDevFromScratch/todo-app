@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :require_same_user, only: [:show, :edit, :update]
+  before_action :set_user_for_category, only: [:show_categories, :add_category, 
+                                              :remove_category]
+  before_action :set_category, only: [:add_category, :remove_category]
 
   def new
     @user = User.new
@@ -39,16 +42,21 @@ class UsersController < ApplicationController
   end
 
   def show_categories
-    @user = User.find_by(slug: params[:user_id])
     @other_categories = categories_without_user_categories
   end
 
   def add_category
+    @user.categories << @category
 
+    flash[:notice] = "#{@category.name} was added to your categories"
+    redirect_to user_my_categories_path(@user)
   end
 
   def remove_category
+    @user.categories.delete(@category)
 
+    flash[:notice] = "#{@category.name} was removed from your categories"
+    redirect_to user_my_categories_path(@user)
   end
 
   private
@@ -59,6 +67,14 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(slug: params[:id])
+  end
+
+  def set_user_for_category
+    @user = User.find_by(slug: params[:user_id])
+  end
+
+  def set_category
+    @category = Category.find(params[:format])
   end
 
   def require_same_user
