@@ -4,7 +4,7 @@
   <h3 class="text-center">Your Categories</h3>
   <hr/>
   <ul>
-    <% @user.categories.each do |category| %>
+    <% @user.categories.order(:name).each do |category| %>
       <li>
         <%= render 'categories/users_category', category: category %>
       </li>

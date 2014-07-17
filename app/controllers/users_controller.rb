@@ -96,6 +96,7 @@ class UsersController < ApplicationController
       end
     end
 
+    other_categories.sort_by! { |category| category.name }
     other_categories
   end
 end
