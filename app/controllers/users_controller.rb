@@ -8,9 +8,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    default_categories = Category.all[0..2]
+    @user.categories << default_categories
 
     if @user.save
-      current_user = @user
+      session[:user_id] = @user.id
       flash[:notice] = "You have successfully registered"
       redirect_to user_path(@user)
     else

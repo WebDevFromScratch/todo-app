@@ -65,6 +65,6 @@ class TasksController < ApplicationController
   end
 
   def set_categories
-    @categories = Category.all
+    @categories = @user.categories
   end
 end
