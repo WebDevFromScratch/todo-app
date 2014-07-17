@@ -38,6 +38,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_categories
+    @user = User.find_by(slug: params[:user_id])
+    @other_categories = categories_without_user_categories
+  end
+
+  def add_category
+
+  end
+
+  def remove_category
+
+  end
+
   private
 
   def user_params
@@ -53,5 +66,20 @@ class UsersController < ApplicationController
       flash[:error] = "You're not allowed to do that"
       redirect_to root_path
     end
+  end
+
+  def categories_without_user_categories
+    other_categories = Array.new
+    Category.all.each do |category|
+      other_categories << category
+    end
+
+    @user.categories.each do |category|
+      if other_categories.include?(category)
+        other_categories.delete(category)
+      end
+    end
+
+    other_categories
   end
 end

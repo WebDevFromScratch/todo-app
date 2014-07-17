@@ -1,0 +1,28 @@
+<%= render 'shared/header', header: 'Categories' %>
+
+<div class='col-md-6 col-md-offset-3'>
+  <h3 class="text-center">Your Categories</h3>
+  <hr/>
+  <ul>
+    <% @user.categories.each do |category| %>
+      <li>
+        <%= render 'categories/users_category', category: category %>
+      </li>
+    <% end %>
+  </ul>
+  <h3 class="text-center">Add More</h3>
+  <hr/>
+  <ul>
+    <% @other_categories.each do |category| %>
+      <li>
+        <%= render 'categories/other_category', category: category %>
+      </li>
+    <% end %>
+  </ul>
+  <p class="text-center">Didn't find a Category you like?</p>
+  
+  <div class="text-center">
+    <button class='btn btn-primary'>Add It!</button>
+  </div>
+  <!-- change this button to a proper link_to later -->
+</div>
