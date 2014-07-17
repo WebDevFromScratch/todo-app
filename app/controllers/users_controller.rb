@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    default_categories = Category.all[0..2]
+    default_categories = Category.all[0..2] #these 'default' categories need to be created manually for the db
     @user.categories << default_categories
 
     if @user.save
