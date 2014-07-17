@@ -23,4 +23,14 @@ module ApplicationHelper
       "priority-high"
     end
   end
+
+  def panel_priority_class(obj)
+    if obj.priority == 1
+      "panel-success"
+    elsif obj.priority == 2
+      "panel-warning"
+    else
+      "panel-danger"
+    end    
+  end
 end

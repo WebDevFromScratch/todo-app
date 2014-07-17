@@ -2,7 +2,9 @@
   <h4>
     <%= link_to task.name, user_task_path(@user, task) %>
     <% if !task.accomplished %>
-      <%= link_to 'Done', user_task_accomplished_path(@user, task), method: 'patch', class: 'btn btn-sm btn-default' %>
+      <%= link_to user_task_accomplished_path(@user, task), method: 'patch', class: 'btn btn-sm btn-default' do %>
+        <span class='glyphicon glyphicon-ok'></span>
+      <% end %>
     <% end %>
     <span class='badge pull-right'><%= task.category.name %></span>
   </h4>

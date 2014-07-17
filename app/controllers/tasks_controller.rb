@@ -13,7 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.user_id = params[:user_id]
+    @task.user_id = @user.id
 
     if @task.save
       flash[:notice] = "Your task was created"
@@ -57,7 +57,7 @@ class TasksController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find_by(slug: params[:user_id])
   end
 
   def set_task
