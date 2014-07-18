@@ -1,0 +1,7 @@
+$('#task-<%= @task.id %>').fadeOut();
+
+setTimeout(function () {
+  $('#task-<%= @task.id %>').find('.btn').remove();
+  $('#task-<%= @task.id %>').appendTo('#tasks-accomplished').fadeIn();
+}, 500);
+

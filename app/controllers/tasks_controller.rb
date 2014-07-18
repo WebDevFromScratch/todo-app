@@ -45,8 +45,14 @@ class TasksController < ApplicationController
     @task = Task.find(params[:task_id])
     @task.mark_accomplished
     @task.save
-    flash[:notice] = "Task accomplished"
-    redirect_to user_path(@user)
+
+    respond_to do |format|
+      format.html do
+        flash[:notice] = "Task accomplished"
+        redirect_to user_path(@user)
+      end
+      format.js #emply just renders a proper template
+    end
   end
 
   private

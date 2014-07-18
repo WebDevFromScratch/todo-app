@@ -1,8 +1,8 @@
-<div class="well well-sm <%= well_priority_class(task) %>">
+<div class="well well-sm <%= well_priority_class(task) %>" id="task-<%= task.id %>">
   <h4>
     <%= link_to task.name, user_task_path(@user, task) %>
     <% if !task.accomplished %>
-      <%= link_to user_task_accomplished_path(@user, task), method: 'patch', class: 'btn btn-sm btn-default pull-right' do %>
+      <%= link_to user_task_accomplished_path(@user, task), remote: true, method: 'patch', class: 'btn btn-sm btn-default pull-right' do %>
         <span class='glyphicon glyphicon-ok'></span>
       <% end %>
     <% end %>

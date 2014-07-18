@@ -9,11 +9,10 @@
     <span class='glyphicon glyphicon-chevron-right'></span>
   <% end %>
 </h4>
-<div class='col-md-6 col-md-offset-3'>
-  
+<div class='col-md-6 col-md-offset-3'>  
   <h3 class='text-center'>Stuff to Do</h3>
   <hr/>
-  <ul>
+  <ul id='tasks-to-do'>
     <% @tasks_in_progress.each do |task| %>
       <li>
         <%= render 'tasks/task', task: task %>
@@ -23,7 +22,7 @@
   <hr/>
   <h3 class='text-center'>Accomplished Tasks</h3>
   <hr/>
-  <ul>
+  <ul id='tasks-accomplished'>
     <% @tasks_accomplished.each do |task| %>
       <li>
         <%= render 'tasks/task', task: task %>
