@@ -57,6 +57,16 @@ class UsersController < ApplicationController
 
     flash[:notice] = "#{@category.name} was removed from your categories"
     redirect_to user_my_categories_path(@user)
+
+    #hitting ActionController::UnknownFormat error when trying to AJAXify this...
+
+    #respond_to do |format|
+    #  format.html do
+    #    flash[:notice] = "#{@category.name} was removed from your categories"
+    #    redirect_to user_my_categories_path(@user)
+    #  end
+    #  format.js
+    #end
   end
 
   private

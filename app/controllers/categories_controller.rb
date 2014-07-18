@@ -17,6 +17,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    #this is still WIP (no routes for viewing this)
     @user = current_user
     @category = Category.find(params[:id])
     @tasks = Task.where(user_id: @user.id).where(category_id: @category.id)

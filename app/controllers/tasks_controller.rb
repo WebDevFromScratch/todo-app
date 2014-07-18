@@ -51,7 +51,7 @@ class TasksController < ApplicationController
         flash[:notice] = "Task accomplished"
         redirect_to user_path(@user)
       end
-      format.js #emply just renders a proper template
+      format.js #empty just renders a proper template
     end
   end
 
