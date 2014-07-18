@@ -6,6 +6,12 @@ class Task < ActiveRecord::Base
   validates :category, presence: true
   validates :priority, presence: true
 
+  validate :deadline_cannot_be_in_the_past
+
+  def deadline_cannot_be_in_the_past
+    errors.add(:deadline, "cannot be in the past") if !deadline.blank? && deadline < Date.today
+  end
+
   def priority_to_word
     if self.priority == 1
       'Low'
