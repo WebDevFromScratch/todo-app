@@ -1,4 +1,5 @@
-<%= render 'shared/header', header: "My Tasks for #{set_date}" %>
+
+<%= render 'shared/header', header: "My Tasks for #{pretty_date(set_date.to_date)}" %>
 
 <h4 class='text-center'>
   <%= link_to date_before_path, class: 'btn btn-default btn-sm pull-left' do %>

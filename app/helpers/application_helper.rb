@@ -33,4 +33,16 @@ module ApplicationHelper
       "panel-danger"
     end    
   end
+
+  def pretty_date(date)
+    if date == Date.today
+      "Today"
+    elsif date == Date.today + 1
+      "Tomorrow"
+    elsif date == Date.today - 1
+      "Yesterday"
+    else
+      date.strftime("%b %e, %Y")
+    end
+  end
 end
