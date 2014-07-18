@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'sessions#new'
   post '/', to: 'sessions#create'
+  get '/date_before', to: 'sessions#date_before'
+  get '/date_after', to: 'sessions#date_after'
 
   get '/register', to: 'users#new'
 
