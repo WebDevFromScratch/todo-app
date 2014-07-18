@@ -16,4 +16,21 @@ class ApplicationController < ActionController::Base
   def set_date
     @set_date ||= session[:date]
   end
+
+  def require_user
+    access_denied unless logged_in?
+  end
+
+  def require_no_user
+    access_denied if logged_in?
+  end
+
+  #def require_same_user
+  #  access_denied if (logged_in? || current_user != @user)
+  #end
+
+  def access_denied
+    flash[:error] = "You are not allowed to do that"
+    redirect_to root_path
+  end
 end

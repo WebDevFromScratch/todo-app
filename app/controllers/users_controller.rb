@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :require_same_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update] #have to set user first
   before_action :set_user_for_category, only: [:show_categories, :add_category, 
                                               :remove_category]
   before_action :set_category, only: [:add_category, :remove_category]
+  
+  before_action :require_same_user, except: [:new, :create]
+  #before_action :require_user, only: []
+  before_action :require_no_user, only: [:new, :create]
 
   def new
     @user = User.new
@@ -87,8 +90,9 @@ class UsersController < ApplicationController
     @category = Category.find(params[:format])
   end
 
+  #extracting this to application_controller.rb
   def require_same_user
-    if current_user != @user
+    if !logged_in? || current_user != @user
       flash[:error] = "You're not allowed to do that"
       redirect_to root_path
     end

@@ -1,4 +1,8 @@
 class CategoriesController < ApplicationController
+  before_action :require_user, only: [:new, :create]
+  before_action :set_user, only: [:show]
+  before_action :require_same_user, only: [:show]
+
   def new
     @category = Category.new
   end
@@ -17,8 +21,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    #this is still WIP (no routes for viewing this)
-    @user = current_user
     @category = Category.find(params[:id])
     @tasks = Task.where(user_id: @user.id).where(category_id: @category.id)
     @tasks_in_progress = @tasks.where({accomplished: false}).order(:priority).all.reverse
@@ -29,5 +31,16 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def set_user
+    @user = current_user
+  end
+
+  def require_same_user
+    if !logged_in? || current_user != @user
+      flash[:error] = "You're not allowed to do that"
+      redirect_to root_path
+    end
   end
 end
