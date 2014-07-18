@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get '/my_categories', to: 'users#show_categories'
     post '/add_category', to: 'users#add_category'
     post 'remove_category', to: 'users#remove_category'
+
+    resources :categories, only: [:show]
   end
 
   resources :categories, only: [:new, :create]

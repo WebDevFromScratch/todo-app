@@ -1,7 +1,7 @@
 <%= render 'shared/header', header: 'Categories' %>
 
 <div class='col-md-6 col-md-offset-3'>
-  <h3 class="text-center">Your Categories</h3>
+  <h3 class="text-center">My Categories</h3>
   <hr/>
   <ul>
     <% @user.categories.order(:name).each do |category| %>
@@ -10,6 +10,8 @@
       </li>
     <% end %>
   </ul>
+  <p class='text-center'><%= link_to "Back to My Tasks", root_path, class: 'btn btn-primary' %></p>
+  <!-- figure out how to change this path to either 'new' or 'edit', depending on where user was before !!MAYBE RE-WRITE THE CATEGORY RESOURCE CREATION?? easier to figure this out? -->
   <h3 class="text-center">Add More</h3>
   <hr/>
   <ul>
@@ -24,5 +26,4 @@
   <div class="text-center">
     <%= link_to "Add It!", new_category_path, class: 'btn btn-primary'%>
   </div>
-  <!-- change this button to a proper link_to later -->
 </div>

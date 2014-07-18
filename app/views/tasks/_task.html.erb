@@ -7,7 +7,7 @@
       <% end %>
     <% end %>
     <div class="text-center">
-      <span class='badge'><%= task.category.name %></span>
+      <span class='badge'><%= link_to task.category.name, user_category_path(@user, task.category) %></span>
     </div>
   </h4>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717172245) do
+ActiveRecord::Schema.define(version: 20140718082222) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140717172245) do
     t.integer  "category_id"
     t.integer  "priority"
     t.boolean  "accomplished", default: false
+    t.date     "deadline"
   end
 
   create_table "user_categories", force: true do |t|

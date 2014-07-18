@@ -16,6 +16,14 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @user = current_user
+    @category = Category.find(params[:id])
+    @tasks = Task.where(user_id: @user.id).where(category_id: @category.id)
+    @tasks_in_progress = @tasks.where({accomplished: false}).order(:priority).all.reverse
+    @tasks_accomplished = @tasks.where({accomplished: true}).order(:priority).all.reverse
+  end
+
   private
 
   def category_params

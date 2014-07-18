@@ -1,6 +1,7 @@
-<%= render 'shared/header', header: "Stuff to Do" %>
+<%= render 'shared/header', header: "Tasks in #{@category.name}" %>
 
-<div class='col-md-6 col-md-offset-3'>
+<div class='col-md-6 col-md-offset-3'>  
+  <h3 class='text-center'>Stuff to Do</h3>
   <ul>
     <% @tasks_in_progress.each do |task| %>
       <li>
@@ -18,4 +19,5 @@
       </li>
     <% end %>
   </ul>
+
 </div>
