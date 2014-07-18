@@ -15,6 +15,8 @@
 
  */
 
+$font-size-base: 17px;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -79,4 +81,27 @@ ul {
 
 .badge a {
   color: white;
+}
+
+/*------------------Adding Fonts--------------------*/
+
+h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+p, form, nav, a, alert, .panel {
+  font-family: 'Abel', sans-serif;
+}
+
+.shadow-into-light, .navbar-brand {
+  font-family: 'Shadows Into Light', cursive;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  font-size: 2.3em;
 }
